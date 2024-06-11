@@ -5,6 +5,7 @@ import 'package:projeto/pages/consultar_heroi_page.dart';
 import 'package:projeto/pages/deletar_heroi_page.dart';
 import 'package:projeto/pages/adicionar_heroi_page.dart';
 import 'package:projeto/pages/editar_heroi_page.dart';
+import 'package:projeto/pages/consulta_via_api_page.dart';
 import 'package:projeto/servicos/autenticacao_servico.dart';
 import 'componentes/decoracao_campo.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -63,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
         context, MaterialPageRoute(builder: (_) => EditarHeroiPage()));
   }
 
+  consultaviaAPI() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => ConsultaHeroiPageAPI()));
+  }
+
   @override
   Widget build(BuildContext context) {
     AutenticacaoServico _authService = AutenticacaoServico();
@@ -70,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
       "Consultar Heroi",
       "Adicionar Heroi",
       "Editar Heroi",
-      "Deletar Heroi"
+      "Deletar Heroi",
+      "Consultar Informações via API"
     ];
     return Scaffold(
       appBar: AppBar(
@@ -100,6 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                     if (opcoes[index] == 'Deletar Heroi') {
                       deleteHeroi();
+                    }
+                    if (opcoes[index] == 'Consultar Informações via API') {
+                      consultaviaAPI();
                     }
                   },
                   child: Text(opcoes[index]),
